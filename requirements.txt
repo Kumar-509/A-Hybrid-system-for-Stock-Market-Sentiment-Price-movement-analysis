@@ -1,0 +1,8 @@
+seaborn
+tqdm
+plotly
+keras
+tensorflow
+scikit-learn
+pydot
+flask

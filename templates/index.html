@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #264653;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #264653;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .form-section {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 6px;
+            background: #f9fafb;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="date"] {
+            padding: 6px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 7px 15px;
+            background: #2a9d8f;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #21867a;
+        }
+        .error {
+            margin-top: 10px;
+            color: #e63946;
+            font-weight: bold;
+        }
+        .result-card {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            background: #e9f5f2;
+        }
+        .result-card span {
+            display: inline-block;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Stock Price Prediction</h1>
+
+    <!-- One Week Forecast Section -->
+    <h2>1-Week Forecast (Opening & OHLC)</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in week_forecast %}
+            <tr>
+                <td>{{ row.date }}</td>
+                <td>{{ "%.2f"|format(row.open) }}</td>
+                <td>{{ "%.2f"|format(row.high) }}</td>
+                <td>{{ "%.2f"|format(row.low) }}</td>
+                <td>{{ "%.2f"|format(row.close) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Predict particular date -->
+    <div class="form-section">
+        <h2>Predict for a Particular Date</h2>
+        <form method="POST" action="/">
+            <label for="target_date">Select Date:</label>
+            <input type="date" id="target_date" name="target_date" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if error_message %}
+            <div class="error">{{ error_message }}</div>
+        {% endif %}
+
+        {% if prediction_result %}
+            <div class="result-card">
+                <h3>Prediction for {{ prediction_result.date }}</h3>
+                <p>
+                    <span><strong>Open:</strong> {{ "%.2f"|format(prediction_result.open) }}</span>
+                    <span><strong>High:</strong> {{ "%.2f"|format(prediction_result.high) }}</span>
+                    <span><strong>Low:</strong> {{ "%.2f"|format(prediction_result.low) }}</span>
+                    <span><strong>Close:</strong> {{ "%.2f"|format(prediction_result.close) }}</span>
+                </p>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+</body>
+</html>
