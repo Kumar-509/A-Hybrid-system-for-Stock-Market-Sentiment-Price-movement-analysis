@@ -40,10 +40,10 @@ Hybrid Integration → Prediction → UI Dashboard
 
 ⚙️ Installation
 # Clone the repository
-git clone https://github.com/your-username/stock-prediction.git
+git clone https://github.com/Kumar-509/A-Hybrid-system-for-Stock-Market-Sentiment-Price-movement-analysis.git
 
 # Navigate to project folder
-cd stock-prediction
+cd A-Hybrid-system-for-Stock-Market-Sentiment-Price-movement-analysis
 
 # Install dependencies
 pip install -r requirements.txt
