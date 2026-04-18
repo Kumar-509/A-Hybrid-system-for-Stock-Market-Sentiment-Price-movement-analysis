@@ -82,3 +82,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ⭐ Support
 If you like this project, give it a ⭐ on GitHub!
+<img width="1184" height="875" alt="Output1" src="https://github.com/user-attachments/assets/5f7e788b-f660-4d01-acd5-0905ea841033" />
+<img width="1055" height="732" alt="output2" src="https://github.com/user-attachments/assets/d9a10735-184c-4dfc-810f-997b69e0913c" />
